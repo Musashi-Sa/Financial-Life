@@ -32,6 +32,12 @@ jobs:
         env:
           GRADLE_OPTS: "-Xmx4096m -XX:MaxMetaspaceSize=1024m -Dorg.gradle.jvmargs=-Xmx4096m"
         run: |
+          mkdir -p android/app/src/main/res/values
+          cat << 'EOF' > android/app/src/main/res/values/colors.xml
+<resources>
+  <color name="splashscreen_background">#FFFFFF</color>
+</resources>
+EOF
           echo "android.enableJetifier=false" >> android/gradle.properties
           cd android && ./gradlew assembleDebug --no-daemon --max-workers=2
 
