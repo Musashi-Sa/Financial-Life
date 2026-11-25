@@ -30,8 +30,10 @@ jobs:
 
       - name: Build Debug APK
         env:
-          ORG_GRADLE_PROJECT_org.gradle.jvmargs: -Xmx4096m -XX:MaxMetaspaceSize=1024m
-        run: cd android && ./gradlew assembleDebug --no-daemon
+          GRADLE_OPTS: "-Xmx4096m -XX:MaxMetaspaceSize=1024m -Dorg.gradle.jvmargs=-Xmx4096m"
+        run: |
+          echo "android.enableJetifier=false" >> android/gradle.properties
+          cd android && ./gradlew assembleDebug --no-daemon --max-workers=2
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
