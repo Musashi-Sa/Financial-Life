@@ -1,0 +1,9 @@
+﻿{
+  "expo": {
+    "name": "FinancialLifeV2",
+    "slug": "financial-life-v2",
+    "version": "1.0.0",
+    "assetBundlePatterns": ["**/*"],
+    "android": { "package": "com.musashi.financelife" }
+  }
+}
